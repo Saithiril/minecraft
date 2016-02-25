@@ -1,0 +1,86 @@
+﻿body {
+	margin: 0;
+	padding: 0;
+	background-image: url("../img/bg.png");
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.right {
+	text-align: right;
+}
+
+.left {
+	text-align: left;
+}
+
+.top {
+	vertical-align: top;
+}
+
+.b-table {
+	display: table;
+}
+
+.b-table-row {
+	display: table-row;
+}
+
+.b-table-cell {
+	display: table-cell;
+}
+
+.b-header {
+	padding: 5px;
+	width: 98%;
+}
+
+.b-header a {
+	padding: 0 15px;
+}
+
+.b-header span {
+	color: white;
+}
+
+.content {
+	min-height: 300px;
+	width: 100%;
+}
+
+.b-left  {
+	position: fixed;
+	width: 250px;
+	height: 100%;
+	border-right: 3px solid Green;
+	border-left: 0px;
+	border-bottom: 0px;
+	border-top: 3px solid green;
+	border-style: dotted;
+	padding: 5px;
+}
+
+.b-left ul {
+	margin: 0;
+	padding: 0;
+}
+
+.b-left li {
+	display: block;
+	background: url("../img/bluemenulnk.png") no-repeat;
+	padding: 0 15px;
+	border-radius: 5px 5px 5px 5px;
+	line-height: 26px;
+	color: white;
+	margin: 3px 0;
+}
+
+.b-left li > a {
+	margin-left: 15px;
+
+}
