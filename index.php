@@ -7,14 +7,19 @@ ini_set('display_startup_errors', 1);
     include('protected/config/main.php');
 
     $params = array();
-    $uri = trim(substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], $config['host']) + strlen($config['host'])), '/');
+    if(strpos($_SERVER['REQUEST_URI'], $config['host'])){
+        $uri = trim(substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], $config['host']) + strlen($config['host'])), '/');
+    } else {
+        $uri = trim($_SERVER['REQUEST_URI'], '/');
+    }
     if($uri) {
         $params = explode('/', $uri);
     }
 
     $className = null;
     if(isset($params[0])) {
-        $className = "{$params[0]}Controller";
+        $controller_name = ucfirst($params[0]);
+        $className = "{$controller_name}Controller";
     } else {
         $className = "SiteController";
     }

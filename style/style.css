@@ -25,6 +25,7 @@ a {
 
 .b-table {
 	display: table;
+	width: 100%;
 }
 
 .b-table-row {
@@ -33,6 +34,10 @@ a {
 
 .b-table-cell {
 	display: table-cell;
+}
+
+.b-table-cell.half{
+	width: 50%;
 }
 
 .b-header {
@@ -49,7 +54,6 @@ a {
 }
 
 .content {
-	min-height: 300px;
 	width: 100%;
 }
 
@@ -83,4 +87,19 @@ a {
 .b-left li > a {
 	margin-left: 15px;
 
+}
+
+.b-center {
+	padding: 0 10px 10px 10px;
+	margin: 0 10px 10px 300px;
+	background: rgba(240,240,240,0.8);
+	border-radius: 10px 10px 10px 10px;
+}
+
+.b-center form {
+	text-align: center;
+}
+
+.b-table.auth .b-table-cell {
+	padding: 5px;
 }
