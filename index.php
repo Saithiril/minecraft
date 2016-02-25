@@ -3,7 +3,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-    set_include_path("protected/controllers/". PATH_SEPARATOR ."protected/components/". PATH_SEPARATOR ."protected/views/". PATH_SEPARATOR ."protected/models/");
+    set_include_path("protected/controllers/". PATH_SEPARATOR ."protected/components/". PATH_SEPARATOR ."protected/views/". PATH_SEPARATOR ."protected/models/". PATH_SEPARATOR ."protected/config/");
     include('protected/config/main.php');
 
     $params = array();
@@ -23,13 +23,15 @@ ini_set('display_startup_errors', 1);
     } else {
         $className = "SiteController";
     }
+    session_start();
     include "$className.php";
 
     $action = 'index';
     $controller = new $className();
     if(isset($params[1])) {
-        if(property_exists($controller, $params[1])) {
+        if(method_exists($className, $params[1]."Action")) {
             $action = $params[1];
         }
     }
+
     $controller->{"{$action}Action"}();

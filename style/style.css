@@ -90,8 +90,13 @@ a {
 }
 
 .b-center {
-	padding: 0 10px 10px 10px;
 	margin: 0 10px 10px 300px;
+	background: rgba(240,240,240,0.4);
+	border-radius: 10px 10px 10px 10px;
+}
+
+.b-center .info {
+	padding: 0 10px 10px 10px;
 	background: rgba(240,240,240,0.8);
 	border-radius: 10px 10px 10px 10px;
 }
