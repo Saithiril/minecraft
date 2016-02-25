@@ -24,6 +24,7 @@ ini_set('display_startup_errors', 1);
         $className = "SiteController";
     }
     session_start();
+    $_SESSION['config'] = $config;
     include "$className.php";
 
     $action = 'index';
