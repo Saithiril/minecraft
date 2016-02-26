@@ -11,17 +11,17 @@
             <div class="b-table-cell">
                 <img src="/<?=$_SESSION['config']['host']?>img/header.png" alt="technomagik"/>
             </div>
-            <?if(isset($_SESSION['user'])): ?>
+            <?php if(isset($_SESSION['user'])): ?>
                 <div class="b-table-cell right top">
                     <a href="/<?=$_SESSION['config']['host']?>auth/userInfo?id=<?=$_SESSION['user']['id']?>"><?=$_SESSION['user']['username']?></a>
                     <a href="/<?=$_SESSION['config']['host']?>auth/logout">Выход</a>
                 </div>
-            <?else: ?>
+            <?php else: ?>
                 <div class="b-table-cell right top">
                     <a href="/<?=$_SESSION['config']['host']?>auth/">Войти</a>
                     <span>(Регистрация возможна только в игре)</span>
                 </div>
-            <?endif?>
+            <?php endif?>
         </div>
     </div>
     <div>
