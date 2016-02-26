@@ -25,6 +25,6 @@ class Controller
 
 	public function redirect($link) {
 		$config = $_SESSION['config'];
-		header('Location: '.$link);
+		header('Location: '. "{$_SESSION['config']['host']}$link");
 	}
 }
