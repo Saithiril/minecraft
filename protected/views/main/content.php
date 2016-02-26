@@ -28,7 +28,7 @@
         <div class="b-left">
             <ul>
                 <li>
-                    <a href="/">Главная страница</a>
+                    <a href="/<?=$_SESSION['config']['host']?>">Главная страница</a>
                 </li>
                 <li>
                     <a href="/">Особенности сервера</a>
