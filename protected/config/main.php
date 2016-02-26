@@ -1,7 +1,7 @@
 <?php
     $config = array(
         'rootRir' => "/home/saithiril/dev/sites/test/",
-        'host' => '/',
+        'host' => '',
         'db' => array(
             'host' => 'localhost',
             'user' => 'root',

@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['config']['host']?>style/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/<?=$_SESSION['config']['host']?>style/style.css"/>
 </head>
 <body>
 <div class="content">
     <div class="b-header b-table">
         <div class="b-table-row">
             <div class="b-table-cell">
-                <img src="<?=$_SESSION['config']['host']?>img/header.png" alt="technomagik"/>
+                <img src="/<?=$_SESSION['config']['host']?>img/header.png" alt="technomagik"/>
             </div>
             <?if(isset($_SESSION['user'])): ?>
                 <div class="b-table-cell right top">

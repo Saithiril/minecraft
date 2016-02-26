@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
     include('protected/config/main.php');
 
     $params = array();
-    if(strpos($_SERVER['REQUEST_URI'], $config['host'])){
+    if($config['host'] && strpos($_SERVER['REQUEST_URI'], $config['host'])){
         $uri = trim(substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], $config['host']) + strlen($config['host'])), '/');
     } else {
         $uri = trim($_SERVER['REQUEST_URI'], '/');
