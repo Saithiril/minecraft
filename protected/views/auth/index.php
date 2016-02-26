@@ -1,6 +1,6 @@
 <div class="info">
 <h2>Вход на сайт</h2>
-<form action="/auth/userAdd" method="post">
+<form action="/<?=$_SESSION['config']['host']?>auth/userAdd" method="post">
     <div class="b-table auth">
         <div class="b-table-row">
             <div class="b-table-cell  right half">

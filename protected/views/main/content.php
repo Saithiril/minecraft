@@ -13,12 +13,12 @@
             </div>
             <?if(isset($_SESSION['user'])): ?>
                 <div class="b-table-cell right top">
-                    <a href="/auth/userInfo?id=<?=$_SESSION['user']['id']?>"><?=$_SESSION['user']['username']?></a>
-                    <a href="/auth/logout">Выход</a>
+                    <a href="/<?=$_SESSION['config']['host']?>auth/userInfo?id=<?=$_SESSION['user']['id']?>"><?=$_SESSION['user']['username']?></a>
+                    <a href="/<?=$_SESSION['config']['host']?>auth/logout">Выход</a>
                 </div>
             <?else: ?>
                 <div class="b-table-cell right top">
-                    <a href="/auth/">Войти</a>
+                    <a href="/<?=$_SESSION['config']['host']?>auth/">Войти</a>
                     <span>(Регистрация возможна только в игре)</span>
                 </div>
             <?endif?>
