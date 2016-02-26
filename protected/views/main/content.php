@@ -18,7 +18,7 @@
                 </div>
             <?else: ?>
                 <div class="b-table-cell right top">
-                    <a href="auth/">Войти</a>
+                    <a href="/auth/">Войти</a>
                     <span>(Регистрация возможна только в игре)</span>
                 </div>
             <?endif?>
