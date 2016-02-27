@@ -13,7 +13,7 @@
             </div>
             <?php if(isset($_SESSION['user'])): ?>
                 <div class="b-table-cell right top">
-                    <a href="/<?=$_SESSION['config']['host']?>auth/userInfo?id=<?=$_SESSION['user']['id']?>"><?=$_SESSION['user']['username']?></a>
+                    <a href="/<?=$_SESSION['config']['host']?>auth/userInfo"><?=$_SESSION['user']['username']?></a>
                     <a href="/<?=$_SESSION['config']['host']?>auth/logout">Выход</a>
                 </div>
             <?php else: ?>

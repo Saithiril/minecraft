@@ -41,8 +41,9 @@ class ARModel
 
 	public function find_by_pk($pk) {
 		$data = $this->_find("{$this->getPK()}=:id", array(':id'=>$pk));
-		if(!empty($data->_attributes))
+		if(!empty($data))
 			$this->_attributes = $data[0]->_attributes;
+		return $this;
 	}
 	
 	public function find_all($condition="", $params="") {
@@ -68,7 +69,6 @@ class ARModel
 		else
 			$result->execute($params);
 		$items = $result->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_class($this));
-	
 		return $items;
 	}
 

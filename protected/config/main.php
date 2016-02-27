@@ -1,11 +1,12 @@
 <?php
     $config = array(
-        'rootRir' => "/home/saithiril/dev/sites/test/",
-        'host' => '',
+        'rootRir' => "",
+        'host' => 'test/',
         'db' => array(
             'host' => 'localhost',
-            'user' => 'root',
-            'password' => 'Saithiril',
+            'user' => 'site',
+            'password' => 'zaraza',
             'databaseName' => 'minecraft'
         )
     );
+

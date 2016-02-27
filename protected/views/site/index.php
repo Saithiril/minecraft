@@ -1,1 +1,1 @@
-    <?php $text ?>
+    <?php echo $test ?>

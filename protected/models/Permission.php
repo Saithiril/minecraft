@@ -1,7 +1,7 @@
 <?php
 include_once("ARModel.php");
 
-class User extends ARModel
+class Permission extends ARModel
 {
     public static function model($className=__CLASS__)
     {
@@ -10,6 +10,6 @@ class User extends ARModel
 
     public function tableName()
     {
-        return "users";
+        return "permissions";
     }
 }
