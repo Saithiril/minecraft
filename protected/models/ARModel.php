@@ -46,8 +46,8 @@ class ARModel
 		return $this;
 	}
 	
-	public function find_all($condition="", $params="") {
-		return $this->_find($condition, $params);
+	public function find_all($condition="", $params="", $start=0, $limit=0) {
+		return $this->_find($condition, $params, $start, $limit);
 	}
 	
 	public function find($condition="", $params="") {
@@ -59,11 +59,12 @@ class ARModel
 		return $this;
 	}
 
-	private function _find($condition="", $params="") {
+	private function _find($condition="", $params="", $start=0, $limit=0) {
+		$text_limit = $limit==0 ? "" : "LIMIT $start $limit";
 		if(empty($condition))
-			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()};");
+			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $text_limit;");
 		else
-			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} where $condition;");
+			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} where $condition $text_limit;");
 		if(empty($params))
 			$result->execute();
 		else

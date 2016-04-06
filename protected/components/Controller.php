@@ -3,7 +3,7 @@ class Controller
 {
 	protected function render($view, $data=array()) {
 		$template = "protected/views/" . mb_strtolower(substr(get_class($this), 0, strpos(get_class($this), "Controller"))) . "/$view.php";
-		$layout = "protected/views/main/content.php";
+		$layout = "protected/views/main/content2.php";
 		if(!is_file($template))
 			return false;
 
