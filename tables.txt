@@ -1,0 +1,26 @@
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `ip` varchar(40) NOT NULL DEFAULT '127.0.0.1',
+  `lastlogin` bigint(20) DEFAULT '0',
+  rule_id INT(11) DEFAULT 0,
+  `x` double NOT NULL DEFAULT '0',
+  `y` double NOT NULL DEFAULT '0',
+  `z` double NOT NULL DEFAULT '0',
+  `world` varchar(255) DEFAULT 'world',
+  `mail` varchar(255) DEFAULT 'your@email.com',
+  `isLogged` smallint(6) NOT NULL DEFAULT '0',
+  `mailver` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `author` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Таблица новостей'

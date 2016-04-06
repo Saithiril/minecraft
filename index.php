@@ -29,9 +29,11 @@ ini_set('display_startup_errors', 1);
 
     $action = 'index';
     $controller = new $className();
+
     if(isset($params[1])) {
-        if(method_exists($className, $params[1]."Action")) {
-            $action = $params[1];
+        $actionName = mb_strtolower(explode('?', $params[1])[0]);
+        if(method_exists($className, $actionName."Action")) {
+            $action = $actionName;
         }
     }
 
