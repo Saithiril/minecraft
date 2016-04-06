@@ -5,7 +5,7 @@
         'db' => array(
             'host' => 'localhost',
             'user' => 'root',
-            'password' => 'Saithiril',
-            'databaseName' => 'minecraft'
+            'password' => '',
+            'databaseName' => ''
         )
     );
