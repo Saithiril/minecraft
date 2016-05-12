@@ -1,57 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html>
-<head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-</head>
-<body>
-    <input type="text" id="expression"> = <span id="sum"></span><br/>
-    <input type="button" id="summ" value="Сумма">
-<script type="application/javascript">
-    $(document).ready(function() {
-        $('#summ').click(function(){
-            $.get("/math/expression", { expression: $('#expression').val() },
-                function(data){
-                    $('#sum').html(data);
-                });
-        });
-    });
-</script>
-<p>
-    2. Разработать реляционную модель данных электронной библиотеки для сущностей: Автор, Книга, Коллекция. Описать связи между сущностями и минимально необходимые поля для предполагаемого функционала.
-</p>
-<p>
-    Мы имеем 3 сущности: Автор, Книга и Коллекция. Автор может написать много книг, но и одна книга может иметь несколько авторов. Связь между сущностями - "многое ко многим".
-    Коллекция и Книга так же связаны "многое ко многим" по той причине, что в одну коллецию могут входить множество книг, но и одна книга может относиться к нескольким коллекциям (мое предположение).
-    Перечислим поля, которые нужны для реализации базового функционала библиотеки:
-    Автор:
-        id - ключевое поле таблицы
-        Ф.И.О. наверное, логичней будет объединить в одном поле, но, если по задаче существует необходимость искать всех авторов исключительно по имени или отчеству, то нужно выделять в 3 отдельных поля
-        далее уже поля по необходимости, такие как годы жизни, биография и в таком духе, но это уже не минимальный функционал - индексируем для быстого поиска по фамилии
-    Книга:
-        id
-        название книги - индексируем для быстого поиска по названию
-    Коллекция:
-        id
-        название - индексируем для быстого поиска по названию
+<?php
+include_once "Permission.php";
+include_once "UserPermission.php";
+include_once "User.php";
 
-    Далее, для реализации связей необходимо создать вспомогательные таблицы: автор+книга и книга+коллекция:
-    автор+книга:
-        id - ключевое поле таблицы
-        author_id - id автора из соответствующей таблицы
-        book_id - id книги из таблицы книг
-    в данной таблице хранятся соответствия автора и книг и отсюда можно будет узнать какие авторы написали какие книги, включая ситуации нескольких авторов у одной книги и множества книг одного автора
-    книга+коллекция:
-        id
-        book_id
-        collection_id
-    тут все аналогично предыдущему случаю.
-</p>
-<p>
-    4. Для оптимизации количества запросов к БД можно использовать дополнительные технологии:
-    - memcashed или redis. В этом лучае, например, можно кешировать только поисковые фразы, а в БД уже либо добавлять новые, либо увеличивать счетчик. В этом случае данные в БД будут обновляться сразу же, а количество запросов сократится до одного
-    так же можно работать только с этими системами, а в базу MySQL записывать данные через определенные промежутки времени
-    Sphinx - система полнотекстового поиска. Привязываем к БД и периодически синхронизируем данные сфинкса и БД. в результате получим очень быстрый поиск по тексту запросов.
-</p>
-</body>
-</html>
+$users = User::model()->find_all();
+$user = $users[0];
+$user->permissions;
+var_dump($user->permissions->name);
+
+//$perms = Permission::model()->find_by_pk(1);
+//var_dump($perms->name);
+
+//$args['tyres'] = new CurlFile('kolesamira_ufa.yml');
+//
+//$curl = curl_init();
+////curl_setopt($curl, CURLOPT_URL, 'http://kolesamira.ru/upload.php');
+//curl_setopt($curl, CURLOPT_URL, 'https://market.yandex.ru/shop/39988/reviews');
+//curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+////curl_setopt($curl, CURLOPT_POST, true);
+////curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
+//$out = curl_exec($curl);
+//echo $out;
+//curl_close($curl);
+
+
+//$file_path = "kolesamira_ufa.yml";
+////$file_path = "temp.xml";
+//$xml = simplexml_load_file($file_path);
+//
+//$offers = $xml->shop->offers;
+//$repetitions = array();
+//foreach ($offers->offer as $offer) {
+//    $repetitions[] = (string)$offer->url;
+//}
+//
+//function repetition($var) {
+//    return $var >= 2;
+//}
+//$repetitions = array_filter(array_count_values($repetitions), "repetition");
+//var_dump($repetitions);
+////return;
+//foreach ($offers->offer as $offer) {
+//    $url = (string)$offer->url;
+//    if(array_key_exists($url, $repetitions)) {
+//        $offer->url = $offer->url . "&" . $repetitions[$url] . "\r\n";
+//        $repetitions[$url] -= 1;
+//    }
+//}
+
+//$xml->asXML("temp.xml");

@@ -12,4 +12,10 @@ class User extends ARModel
     {
         return "users";
     }
+
+    public function relations() {
+        return array(
+            "permissions" => array(self::MANY_MANY, 'Permission', 'user_permissions', array('user_id', 'permission_id'))
+        );
+    }
 }

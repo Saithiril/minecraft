@@ -12,6 +12,7 @@ class ARModel
 	protected static $_models = array();
 
 	private $_attributes=array();
+	private $joins = array();
 
 	public static function model($className=__CLASS__)
 	{
@@ -20,7 +21,6 @@ class ARModel
 		else
 		{
 			$model=self::$_models[$className]=new $className(null);
-//			$model->attachBehaviors($model->behaviors());
 			return $model;
 		}
 	}
@@ -37,6 +37,11 @@ class ARModel
 			self::$db->exec('SET NAMES utf8');
 			return self::$db;
 		}
+	}
+
+	public function join($tablename, $key_left, $key_right) {
+		$this->joins[$tablename] = $this->tableName() . ".$key_left=$tablename.$key_right";
+		return $this;
 	}
 
 	public function find_by_pk($pk) {
@@ -61,10 +66,14 @@ class ARModel
 
 	private function _find($condition="", $params="", $start=0, $limit=0) {
 		$text_limit = $limit==0 ? "" : "LIMIT $start $limit";
+		$join = "";
+		foreach($this->joins as $table=>$condition) {
+			$join .= "JOIN $table ON $condition";
+		}
 		if(empty($condition))
-			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $text_limit;");
+			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $join $text_limit;");
 		else
-			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} where $condition $text_limit;");
+			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $join where $condition $text_limit;");
 		if(empty($params))
 			$result->execute();
 		else
@@ -116,6 +125,10 @@ class ARModel
 		return 'id';
 	}
 
+	private function getPKValue() {
+		return $this->{$this->getPK()};
+	}
+
 	public function relations() {
 		return array();
 	}
@@ -130,8 +143,25 @@ class ARModel
 	}
 
 	public function __get($name) {
-		if(isset($this->_attributes[$name]))
+		if(isset($this->_attributes[$name])) {
 			return $this->_attributes[$name];
+		}
+		if(isset($this->relations()[$name])) {
+			list($type, $modelname, $tablename, $keys) = $this->relations()[$name];
+			if($type == self::MANY_MANY) {
+				$model = $modelname::model();
+				$result = $this->getDbConnection()->prepare("SELECT * FROM {$model->tableName()} JOIN $tablename ON {$model->tableName()}.{$model->getPK()}=$tablename.{$keys[1]} WHERE {$keys[0]}=:id;");
+				$result->execute(array(
+					':id' => $this->getPKValue(),
+				));
+				$items = $result->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_class($model));
+				if(count($items) > 1) {
+					return $items;
+				} else {
+					return $items[0];
+				}
+			}
+		}
 		return array();
 	}
 
