@@ -156,8 +156,10 @@ class ARModel
 				));
 				$items = $result->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_class($model));
 				if(count($items) > 1) {
+					$this->_attributes[$name] = $items;
 					return $items;
 				} else {
+					$this->_attributes[$name] = $items[0];
 					return $items[0];
 				}
 			}

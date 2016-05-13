@@ -1,3 +1,8 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+</head>
 <?php
 include_once "Permission.php";
 include_once "UserPermission.php";
@@ -7,6 +12,7 @@ $users = User::model()->find_all();
 $user = $users[0];
 $user->permissions;
 var_dump($user->permissions->name);
+echo $user->permissions->name . " - группа";
 
 //$perms = Permission::model()->find_by_pk(1);
 //var_dump($perms->name);
