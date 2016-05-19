@@ -13,6 +13,7 @@ class ARModel
 
 	private $_attributes=array();
 	private $joins = array();
+	private $filters = array();
 
 	public static function model($className=__CLASS__)
 	{
@@ -50,8 +51,12 @@ class ARModel
 			$this->_attributes = $data[0]->_attributes;
 		return $this;
 	}
+
+	public function find_all($start=0, $limit=0) {
+		return $this->_find_all("", "", $start=0, $limit=0);
+	}
 	
-	public function find_all($condition="", $params="", $start=0, $limit=0) {
+	private function _find_all($condition="", $params="", $start=0, $limit=0) {
 		return $this->_find($condition, $params, $start, $limit);
 	}
 	

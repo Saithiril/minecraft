@@ -5,7 +5,6 @@
 </head>
 <?php
 include_once "Permission.php";
-include_once "UserPermission.php";
 include_once "User.php";
 
 $users = User::model()->find_all();
