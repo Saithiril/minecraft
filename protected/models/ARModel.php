@@ -53,7 +53,7 @@ class ARModel
 	}
 
 	public function find_all($start=0, $limit=0) {
-		return $this->_find_all("", "", $start=0, $limit=0);
+		return $this->_find_all("", "", $start, $limit);
 	}
 	
 	private function _find_all($condition="", $params="", $start=0, $limit=0) {
@@ -70,6 +70,7 @@ class ARModel
 	}
 
 	private function _find($condition="", $params="", $start=0, $limit=0) {
+		$order = "ORDER BY {$this->getPK()} desc";
 		$text_limit = $limit==0 ? "" : "LIMIT $start $limit";
 		$join = "";
 		foreach($this->joins as $table=>$condition) {
