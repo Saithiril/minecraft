@@ -6,6 +6,6 @@
             'host' => 'localhost',
             'user' => 'root',
             'password' => 'Saithiril',
-            'databaseName' => 'minecraft'
+            'databaseName' => 'wow'
         )
     );

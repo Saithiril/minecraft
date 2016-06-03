@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="393b671f-3f94-4335-bc1b-c03fa032dbc6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protected/models/Guild.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/config/main.php" afterPath="$PROJECT_DIR$/protected/config/main.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/ARModel.php" afterPath="$PROJECT_DIR$/protected/models/ARModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/views/main/content2.php" afterPath="$PROJECT_DIR$/protected/views/main/content2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tables.txt" afterPath="$PROJECT_DIR$/tables.txt" />
     </list>
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/protected/components/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+              <caret line="30" column="41" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -46,63 +49,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="83" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MathComponent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/components/MathComponent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="168" column="33" selection-start-line="168" selection-start-column="33" selection-end-line="168" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ARModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/models/ARModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0">
-              <caret line="72" column="50" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
               <folding>
-                <marker date="1464087741755" expanded="true" signature="2061:2102" placeholder="select * fro... $" />
-                <marker date="1464087741755" expanded="true" signature="2173:2231" placeholder="select * fro... $" />
-                <marker date="1464087741755" expanded="true" signature="2687:2744" placeholder="insert into $... " />
-                <marker date="1464087741755" expanded="true" signature="3203:3271" placeholder="update ${{$t... " />
-                <marker date="1464087741755" expanded="true" signature="3602:3663" placeholder="delete from " />
-                <marker date="1464087741755" expanded="true" signature="4429:4443" placeholder="SELECT * FRO... $" />
-                <marker date="1464087741755" expanded="true" signature="4429:4484" placeholder="SELECT * FRO... $" />
-                <marker date="1464087741755" expanded="true" signature="4429:4506" placeholder="SELECT * FRO... $" />
-                <marker date="1464087741755" expanded="true" signature="4429:4535" placeholder="SELECT * FRO... $" />
-                <marker date="1464087741755" expanded="true" signature="4429:4564" placeholder="SELECT * FRO... permissions" />
-                <marker date="1464087741755" expanded="true" signature="4429:4566" placeholder="SELECT * FRO... permissions" />
+                <marker date="1464936941578" expanded="true" signature="2077:2118" placeholder="select * fro... $" />
+                <marker date="1464936941578" expanded="true" signature="2189:2247" placeholder="select * fro... $" />
+                <marker date="1464936941578" expanded="true" signature="2703:2760" placeholder="insert into $... " />
+                <marker date="1464936941578" expanded="true" signature="2709:2760" placeholder="insert into $... " />
+                <marker date="1464936941578" expanded="true" signature="3219:3287" placeholder="update ${{$t... " />
+                <marker date="1464936941578" expanded="true" signature="3618:3679" placeholder="delete from " />
+                <marker date="1464936941578" expanded="true" signature="4445:4459" placeholder="SELECT * FRO... $" />
+                <marker date="1464936941578" expanded="true" signature="4445:4500" placeholder="SELECT * FRO... $" />
+                <marker date="1464936941578" expanded="true" signature="4445:4522" placeholder="SELECT * FRO... $" />
+                <marker date="1464936941578" expanded="true" signature="4445:4551" placeholder="SELECT * FRO... $" />
+                <marker date="1464936941578" expanded="true" signature="4445:4580" placeholder="SELECT * FRO... permissions" />
+                <marker date="1464936941578" expanded="true" signature="4445:4582" placeholder="SELECT * FRO... permissions" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Permission.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/Permission.php">
+      <file leaf-file-name="content2.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/views/main/content2.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.50791854">
+              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content2.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/views/main/content2.php">
+      <file leaf-file-name="Guild.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/Guild.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tables.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tables.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="51" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Eco.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/Eco.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -111,28 +125,18 @@
       <file leaf-file-name="content.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/views/main/content.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state vertical-scroll-proportion="-3.9583333">
+              <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22234891">
-              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MathController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/controllers/MathController.php">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -160,18 +164,19 @@
         <option value="$PROJECT_DIR$/protected/components/MathController.php" />
         <option value="$PROJECT_DIR$/protected/components/MathComponent.php" />
         <option value="$PROJECT_DIR$/protected/controllers/MathController.php" />
-        <option value="$PROJECT_DIR$/protected/config/main.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/tables.txt" />
         <option value="$PROJECT_DIR$/protected/models/UserPermission.php" />
         <option value="$PROJECT_DIR$/protected/views/auth/user.php" />
         <option value="$PROJECT_DIR$/protected/views/main/content3.php" />
         <option value="$PROJECT_DIR$/protected/components/Controller.php" />
         <option value="$PROJECT_DIR$/protected/models/Permission.php" />
         <option value="$PROJECT_DIR$/protected/models/User.php" />
-        <option value="$PROJECT_DIR$/protected/views/main/content2.php" />
-        <option value="$PROJECT_DIR$/protected/models/ARModel.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/protected/config/main.php" />
+        <option value="$PROJECT_DIR$/protected/models/Guild.php" />
+        <option value="$PROJECT_DIR$/tables.txt" />
+        <option value="$PROJECT_DIR$/protected/models/ARModel.php" />
+        <option value="$PROJECT_DIR$/protected/views/main/content2.php" />
       </list>
     </option>
   </component>
@@ -185,8 +190,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1912" />
-    <option name="height" value="1045" />
+    <option name="x" value="-2" />
+    <option name="y" value="-3" />
+    <option name="width" value="1924" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -213,7 +220,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -400,7 +407,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -410,17 +417,17 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/protected/views/main" />
-      <recent name="$PROJECT_DIR$/protected/models" />
-      <recent name="$PROJECT_DIR$/protected/components" />
-      <recent name="$PROJECT_DIR$/protected/controllers" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/fonts/MyriadProSemiBoldItalic" />
       <recent name="$PROJECT_DIR$/protected/models" />
       <recent name="$PROJECT_DIR$/protected" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/protected/models" />
+      <recent name="$PROJECT_DIR$/protected/views/main" />
+      <recent name="$PROJECT_DIR$/protected/components" />
+      <recent name="$PROJECT_DIR$/protected/controllers" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -478,10 +485,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1912" height="1045" extended-state="4" />
+    <frame x="-2" y="-3" width="1924" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15862808" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16453674" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -517,14 +524,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/views/main/content.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -583,17 +582,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="46" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="46" />
           <folding>
-            <marker date="1464087741755" expanded="true" signature="2061:2102" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2173:2231" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2687:2744" placeholder="insert into $... " />
-            <marker date="1464087741755" expanded="true" signature="3203:3271" placeholder="update ${{$t... " />
-            <marker date="1464087741755" expanded="true" signature="3602:3663" placeholder="delete from " />
-            <marker date="1464087741755" expanded="true" signature="4429:4443" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4484" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4506" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4535" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4564" placeholder="SELECT * FRO... permissions" />
-            <marker date="1464087741755" expanded="true" signature="4429:4566" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="2077:2118" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2189:2247" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2703:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="2709:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="3219:3287" placeholder="update ${{$t... " />
+            <marker date="1464936941578" expanded="true" signature="3618:3679" placeholder="delete from " />
+            <marker date="1464936941578" expanded="true" signature="4445:4459" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4500" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4522" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4551" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4580" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="4445:4582" placeholder="SELECT * FRO... permissions" />
           </folding>
         </state>
       </provider>
@@ -660,17 +660,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="46" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="46" />
           <folding>
-            <marker date="1464087741755" expanded="true" signature="2061:2102" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2173:2231" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2687:2744" placeholder="insert into $... " />
-            <marker date="1464087741755" expanded="true" signature="3203:3271" placeholder="update ${{$t... " />
-            <marker date="1464087741755" expanded="true" signature="3602:3663" placeholder="delete from " />
-            <marker date="1464087741755" expanded="true" signature="4429:4443" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4484" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4506" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4535" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4564" placeholder="SELECT * FRO... permissions" />
-            <marker date="1464087741755" expanded="true" signature="4429:4566" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="2077:2118" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2189:2247" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2703:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="2709:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="3219:3287" placeholder="update ${{$t... " />
+            <marker date="1464936941578" expanded="true" signature="3618:3679" placeholder="delete from " />
+            <marker date="1464936941578" expanded="true" signature="4445:4459" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4500" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4522" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4551" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4580" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="4445:4582" placeholder="SELECT * FRO... permissions" />
           </folding>
         </state>
       </provider>
@@ -730,17 +731,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="63" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
           <folding>
-            <marker date="1464087741755" expanded="true" signature="2061:2102" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2173:2231" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2687:2744" placeholder="insert into $... " />
-            <marker date="1464087741755" expanded="true" signature="3203:3271" placeholder="update ${{$t... " />
-            <marker date="1464087741755" expanded="true" signature="3602:3663" placeholder="delete from " />
-            <marker date="1464087741755" expanded="true" signature="4429:4443" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4484" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4506" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4535" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4564" placeholder="SELECT * FRO... permissions" />
-            <marker date="1464087741755" expanded="true" signature="4429:4566" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="2077:2118" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2189:2247" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2703:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="2709:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="3219:3287" placeholder="update ${{$t... " />
+            <marker date="1464936941578" expanded="true" signature="3618:3679" placeholder="delete from " />
+            <marker date="1464936941578" expanded="true" signature="4445:4459" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4500" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4522" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4551" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4580" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="4445:4582" placeholder="SELECT * FRO... permissions" />
           </folding>
         </state>
       </provider>
@@ -766,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/models/Eco.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/delivery.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -787,24 +782,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13714285">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.5">
           <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tables.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="17" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -847,15 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/main/content.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -863,7 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="168" column="33" selection-start-line="168" selection-start-column="33" selection-end-line="168" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,7 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="83" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,15 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/components/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -906,38 +867,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/views/main/content2.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/Eco.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="51" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/components/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="41" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/Guild.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/models/ARModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0">
-          <caret line="72" column="50" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
           <folding>
-            <marker date="1464087741755" expanded="true" signature="2061:2102" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2173:2231" placeholder="select * fro... $" />
-            <marker date="1464087741755" expanded="true" signature="2687:2744" placeholder="insert into $... " />
-            <marker date="1464087741755" expanded="true" signature="3203:3271" placeholder="update ${{$t... " />
-            <marker date="1464087741755" expanded="true" signature="3602:3663" placeholder="delete from " />
-            <marker date="1464087741755" expanded="true" signature="4429:4443" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4484" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4506" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4535" placeholder="SELECT * FRO... $" />
-            <marker date="1464087741755" expanded="true" signature="4429:4564" placeholder="SELECT * FRO... permissions" />
-            <marker date="1464087741755" expanded="true" signature="4429:4566" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="2077:2118" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2189:2247" placeholder="select * fro... $" />
+            <marker date="1464936941578" expanded="true" signature="2703:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="2709:2760" placeholder="insert into $... " />
+            <marker date="1464936941578" expanded="true" signature="3219:3287" placeholder="update ${{$t... " />
+            <marker date="1464936941578" expanded="true" signature="3618:3679" placeholder="delete from " />
+            <marker date="1464936941578" expanded="true" signature="4445:4459" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4500" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4522" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4551" placeholder="SELECT * FRO... $" />
+            <marker date="1464936941578" expanded="true" signature="4445:4580" placeholder="SELECT * FRO... permissions" />
+            <marker date="1464936941578" expanded="true" signature="4445:4582" placeholder="SELECT * FRO... permissions" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/protected/views/main/content.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22234891">
-          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        <state vertical-scroll-proportion="-3.9583333">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/main/content2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50791854">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
           <folding />
         </state>
       </provider>

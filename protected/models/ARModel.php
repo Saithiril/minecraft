@@ -64,9 +64,10 @@ class ARModel
 		$data = $this->_find($condition, $params);
 		if(!empty($data)) {
 			$this->_attributes = $data[0]->_attributes;
+			return $this;
 		} else
 			$this->_attributes = array();
-		return $this;
+		return null;
 	}
 
 	private function _find($condition="", $params="", $start=0, $limit=0) {

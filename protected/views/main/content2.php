@@ -4,30 +4,41 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 </head>
 <?php
-include_once "Permission.php";
-include_once "User.php";
+include_once "Guild.php";
 
-$users = User::model()->find_all();
-$user = $users[0];
-$user->permissions;
-var_dump($user->permissions->name);
-echo $user->permissions->name . " - группа";
+//var_dump($user->permissions->name);
+//echo $user->permissions->name . " - группа";
 
 //$perms = Permission::model()->find_by_pk(1);
 //var_dump($perms->name);
 
 //$args['tyres'] = new CurlFile('kolesamira_ufa.yml');
 //
-//$curl = curl_init();
-////curl_setopt($curl, CURLOPT_URL, 'http://kolesamira.ru/upload.php');
-//curl_setopt($curl, CURLOPT_URL, 'https://market.yandex.ru/shop/39988/reviews');
-//curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
-////curl_setopt($curl, CURLOPT_POST, true);
-////curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
-//$out = curl_exec($curl);
-//echo $out;
-//curl_close($curl);
-
+$guild_name = "ЕКАТЕРИНБУРГ";
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/guild/Голдринн/$guild_name?fields=members&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
+curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+$data = curl_exec($curl);
+curl_close($curl);
+$guild_info = json_decode($data);
+$guild = Guild::model();
+//var_dump($guild_info);
+if(!$guild->find('name=:name', array("name" => $guild_name))) {
+    $guild->name = $guild_info->name;
+    $guild->realm = $guild_info->realm;
+    $guild->battlegroup = $guild_info->battlegroup;
+    $guild->level = $guild_info->level;
+    $guild->achievementPoints = $guild_info->achievementPoints;
+    $guild->lastModified = $guild_info->lastModified;
+    $guild->side = $guild_info->side;
+//    $guild->save();
+}
+function sort_members($member) {
+    return $member->character->level == 100 && $member->character->spec->role == "TANK";
+}
+$members = array_filter($guild_info->members, 'sort_members');
+var_dump($members[55]);
+// kolesamira
 
 //$file_path = "kolesamira_ufa.yml";
 ////$file_path = "temp.xml";

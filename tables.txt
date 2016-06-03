@@ -38,3 +38,15 @@ CREATE TABLE user_permissions (
     permission_id INT(11) NOT NULL,
     PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE guilds (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name varchar(255) UNIQUE COLLATE utf8_general_ci NOT NULL,
+    realm varchar(100) COLLATE utf8_general_ci NOT NULL,
+    battlegroup varchar(100) COLLATE utf8_general_ci NOT NULL,
+    level INT(2),
+    side INT(1),
+    achievementPoints INT(11),
+    lastModified INT(11),
+    PRIMARY KEY (id)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
