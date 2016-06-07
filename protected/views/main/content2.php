@@ -5,6 +5,7 @@
 </head>
 <?php
 include_once "Guild.php";
+include_once "Spec.php";
 
 //var_dump($user->permissions->name);
 //echo $user->permissions->name . " - группа";
@@ -16,28 +17,13 @@ include_once "Guild.php";
 //
 $guild_name = "ЕКАТЕРИНБУРГ";
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/guild/Голдринн/$guild_name?fields=members&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
+curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/character/Голдринн/Алефейя?fields=talents&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
 curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
 $data = curl_exec($curl);
 curl_close($curl);
-$guild_info = json_decode($data);
-$guild = Guild::model();
-//var_dump($guild_info);
-if(!$guild->find('name=:name', array("name" => $guild_name))) {
-    $guild->name = $guild_info->name;
-    $guild->realm = $guild_info->realm;
-    $guild->battlegroup = $guild_info->battlegroup;
-    $guild->level = $guild_info->level;
-    $guild->achievementPoints = $guild_info->achievementPoints;
-    $guild->lastModified = $guild_info->lastModified;
-    $guild->side = $guild_info->side;
-//    $guild->save();
-}
-function sort_members($member) {
-    return $member->character->level == 100 && $member->character->spec->role == "TANK";
-}
-$members = array_filter($guild_info->members, 'sort_members');
-var_dump($members[55]);
+$data_info = json_decode($data);
+
+
 // kolesamira
 
 //$file_path = "kolesamira_ufa.yml";

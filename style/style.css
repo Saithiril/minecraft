@@ -1,9 +1,6 @@
 ﻿body {
 	margin: 0;
 	padding: 0;
-	background-image: url("../img/bg.png");
-	background-attachment: fixed;
-	background-size: cover;
 }
 
 a {
@@ -107,4 +104,9 @@ a {
 
 .b-table.auth .b-table-cell {
 	padding: 5px;
+}
+
+.character_list {
+	width: 100%;
+	text-align: center;
 }

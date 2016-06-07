@@ -39,6 +39,7 @@ CREATE TABLE user_permissions (
     PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+https://eu.api.battle.net/wow/guild/Голдринн/Голдринн?fields=members&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j
 CREATE TABLE guilds (
     id INT(11) NOT NULL AUTO_INCREMENT,
     name varchar(255) UNIQUE COLLATE utf8_general_ci NOT NULL,
@@ -48,5 +49,54 @@ CREATE TABLE guilds (
     side INT(1),
     achievementPoints INT(11),
     lastModified INT(11),
+    PRIMARY KEY (id)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+https://eu.api.battle.net/wow/character/Голдринн/Коатлику?locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j
+CREATE TABLE characters (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name varchar(255) UNIQUE COLLATE utf8_general_ci NOT NULL,
+    realm varchar(100) COLLATE utf8_general_ci NOT NULL,
+    battlegroup varchar(100) COLLATE utf8_general_ci NOT NULL,
+    class INT(3),
+    race INT(3),
+    gender INT(1),
+    level INT(5),
+    achievementPoints INT(11),
+    thumbnail varchar(255),
+    calcClass varchar(5),
+    faction INT(3),
+    totalHonorableKills INT(11),
+    lastModified INT(11),
+    PRIMARY KEY (id)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+https://eu.api.battle.net/wow/data/character/classes?locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j
+CREATE TABLE classes (
+    id INT(11) NOT NULL,
+    mask INT(5),
+    powerType varchar(30),
+    name varchar(50),
+    PRIMARY KEY (id)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+https://eu.api.battle.net/wow/data/character/races?locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j
+CREATE TABLE races (
+    id INT(11) NOT NULL,
+    mask INT(5),
+    side varchar(30),
+    name varchar(60),
+    PRIMARY KEY (id)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+https://eu.api.battle.net/wow/character/Голдринн/Коатлику?fields=talents&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j
+CREATE TABLE specs (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name varchar(255) UNIQUE COLLATE utf8_general_ci NOT NULL,
+    role varchar(255) COLLATE utf8_general_ci NOT NULL,
+    backgroundImage varchar(255) COLLATE utf8_general_ci,
+    icon varchar(255) COLLATE utf8_general_ci,
+    description varchar(255) COLLATE utf8_general_ci,
+    spec_order INT(5),
     PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
