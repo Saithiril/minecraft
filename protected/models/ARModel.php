@@ -56,7 +56,7 @@ class ARModel
 		return $this->_find_all("", "", $start, $limit);
 	}
 	
-	private function _find_all($condition="", $params="", $start=0, $limit=0) {
+	protected function _find_all($condition="", $params="", $start=0, $limit=0) {
 		return $this->_find($condition, $params, $start, $limit);
 	}
 	

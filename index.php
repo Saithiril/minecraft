@@ -16,16 +16,6 @@
         $params = explode('/', $uri);
     }
 
-    if(count($params) < 2) {
-        // костыль для Рема
-        session_start();
-        $_SESSION['config'] = $config;
-        include "SiteController.php";
-        $controller = new SiteController();
-        $controller->indexAction();
-        return;
-    }
-
     $className = null;
     if(isset($params[0])) {
         $controller_name = ucfirst($params[0]);

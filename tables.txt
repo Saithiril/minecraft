@@ -55,6 +55,9 @@ CREATE TABLE guilds (
 https://eu.api.battle.net/wow/character/Голдринн/Коатлику?locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j
 CREATE TABLE characters (
     id INT(11) NOT NULL AUTO_INCREMENT,
+    is_active INT(1) DEFAULT 1,
+    wait_delete INT(1) DEFAULT 0,
+    guild_id INT(11) DEFAULT NULL,
     name varchar(255) UNIQUE COLLATE utf8_general_ci NOT NULL,
     realm varchar(100) COLLATE utf8_general_ci NOT NULL,
     battlegroup varchar(100) COLLATE utf8_general_ci NOT NULL,
@@ -62,6 +65,9 @@ CREATE TABLE characters (
     race INT(3),
     gender INT(1),
     level INT(5),
+    rank INT(5),
+    first_spec_id INT(11) DEFAULT NULL,
+    second_spec_id INT(11) DEFAULT NULL,
     achievementPoints INT(11),
     thumbnail varchar(255),
     calcClass varchar(5),
