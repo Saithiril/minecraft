@@ -15,7 +15,8 @@ class Character extends ARModel
 
     public function relations() {
         return array(
-            "className" => array(self::HAS_ONE, 'CharacterClass', 'classes', array('class', 'id'))
+            "className" => array(self::HAS_ONE, 'CharacterClass', '', array('class', 'id')),
+            "_race" => array(self::HAS_ONE, 'Race', '', array('class', 'id')),
         );
     }
 

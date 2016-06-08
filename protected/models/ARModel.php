@@ -133,8 +133,6 @@ class ARModel
 		$data = array_combine ($keys, array_values(array_map(function ($x) use($object) {return $object->$x;}, $fields)));
 		$data[':id'] = $this->{$this->getPK()};
 		$result->execute($data);
-		var_dump($result);
-		var_dump($data);
 	}
 
 	public function delete() {

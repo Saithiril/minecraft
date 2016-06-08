@@ -2,6 +2,7 @@
 include "Controller.php";
 include "CharacterClass.php";
 include "Character.php";
+include_once "Race.php";
 
 class ResurcesController extends Controller
 {
