@@ -12,6 +12,7 @@
     } else {
         $uri = trim($_SERVER['REQUEST_URI'], '/');
     }
+    $uri = mb_strtolower(explode('?', $uri)[0]);
     if($uri) {
         $params = explode('/', $uri);
     }

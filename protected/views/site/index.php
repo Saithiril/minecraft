@@ -3,6 +3,15 @@
 <p>Достижения: <?=$guild->achievementPoints?></p>
 <p>Количество игроков: <?= count($characters)?></p>
 
+    <div class="pagination">
+        <?if($page > 1):?>
+            <div class="__item"><a href="?page=1">В начало</a></div><div class="__item"><a href="?page=<?= $page - 1 ?>">Назад</a></div>
+        <?endif?>
+        <div class="__item">Страница <?=$page?> из <?=$pagecount?></div>
+        <?if($page < $pagecount):?>
+            <div class="__item"><a href="?page=<?= $page + 1 ?>">Вперед</a></div><div class="__item"><a href="?page=<?=$pagecount?>">В конец</a></div>
+        <?endif?>
+    </div>
 <table border="1px" width="100%" class="character_list">
     <theader>
         <tr>
@@ -12,8 +21,6 @@
             <th>Раса</th>
             <th>Уровень</th>
             <th>Очки достижений</th>
-<!--            <th>Специализация</th>-->
-<!--            <th>Роль</th>-->
             <th>Ранг</th>
         </tr>
     </theader>
@@ -26,12 +33,10 @@
                 <td><?=$member->race?></td>
                 <td><?=$member->level?></td>
                 <td><?=$member->achievementPoints?></td>
-<!--                <td>--><?//=isset($member->character->spec) ? $member->character->spec->name : "-"?><!--</td>-->
-<!--                <td>--><?//=isset($member->character->spec) ? $member->character->spec->role : "-"?><!--</td>-->
-<!--                <td>--><?//=$member->rank?><!--</td>-->
+                <td><?=$member->rank?></td>
             </tr>
         <?php endforeach?>
     </tbody>
 </table>
 <?php endif?>
-<?php //var_dump($guild_info->members[0]); ?>
+<?php //var_dump($pagecount); ?>

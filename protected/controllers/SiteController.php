@@ -10,9 +10,19 @@ class SiteController extends Controller
 
 		$guild = Guild::model()->find('name=:name', array(':name'=>$guildname));
 
-		$characters = Character::model()->find_guild_members($guild->id);
+		$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+		$perpage = 20;
+		$start = ($page-1) * $perpage;
 
-		$data = array("characters" => $characters, 'guild' => $guild);
+		$characters = Character::model()->find_guild_members($guild->id, $start, $perpage);
+		$count_all = Character::model()->get_last_query_count();
+
+		$data = array(
+			"characters" => $characters,
+			'guild' => $guild,
+			'page' => $page,
+			'pagecount' => $count_all / $perpage,
+		);
 
 		$this->render("index", $data);
 	}

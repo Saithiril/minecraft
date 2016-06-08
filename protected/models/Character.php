@@ -17,7 +17,7 @@ class Character extends ARModel
         return $this->find('name=:name', array("name"=>$name));
     }
 
-    public function find_guild_members($guild_id) {
-        return $this->_find_all('guild_id=:id', array('id' => $guild_id));
+    public function find_guild_members($guild_id, $start=0, $count=10) {
+        return $this->_find_all('guild_id=:id', array('id' => $guild_id), $start, $count);
     }
 }

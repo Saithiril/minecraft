@@ -14,6 +14,7 @@ class ARModel
 	private $_attributes=array();
 	private $joins = array();
 	private $filters = array();
+	private $last_count = 0;
 
 	public static function model($className=__CLASS__)
 	{
@@ -72,7 +73,7 @@ class ARModel
 
 	private function _find($condition="", $params="", $start=0, $limit=0) {
 		$order = "ORDER BY {$this->getPK()} desc";
-		$text_limit = $limit==0 ? "" : "LIMIT $start $limit";
+		$text_limit = $limit==0 ? "" : "LIMIT $start, $limit";
 		$join = "";
 		foreach($this->joins as $table=>$condition) {
 			$join .= "JOIN $table ON $condition";
@@ -86,7 +87,24 @@ class ARModel
 		else
 			$result->execute($params);
 		$items = $result->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_class($this));
+
+		if($limit != 0) {
+			if(empty($condition))
+				$result = $this->getDbConnection()->prepare("select COUNT({$this->getPK()}) from {$this->tableName()} $join;");
+			else
+				$result = $this->getDbConnection()->prepare("select COUNT({$this->getPK()}) from {$this->tableName()} $join where $condition;");
+			if(empty($params))
+				$result->execute();
+			else
+				$result->execute($params);
+			$count = $result->fetch(PDO::FETCH_NUM);
+			$this->last_count = $count[0];
+		}
 		return $items;
+	}
+
+	public function get_last_query_count() {
+		return $this->last_count;
 	}
 
 	public function save() {

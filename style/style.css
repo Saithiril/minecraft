@@ -3,10 +3,10 @@
 	padding: 0;
 }
 
-a {
-	color: white;
-	text-decoration: none;
-}
+/*a {*/
+	/*color: black;*/
+	/*text-decoration: none;*/
+/*}*/
 
 .right {
 	text-align: right;
@@ -109,4 +109,14 @@ a {
 .character_list {
 	width: 100%;
 	text-align: center;
+}
+
+.pagination {
+	float: right;
+	margin: 10px;
+}
+
+.pagination .__item {
+	display: inline-block;
+	margin: 0 5px;
 }
