@@ -1,7 +1,7 @@
 <?php if($guild):?>
 <h1><?= $guild->name?></h1>
 <p>Достижения: <?=$guild->achievementPoints?></p>
-<p>Количество игроков: <?= count($characters)?></p>
+<p>Количество игроков: <?= $count_all?></p>
 
     <div class="pagination">
         <?if($page > 1):?>
@@ -22,18 +22,24 @@
             <th>Уровень</th>
             <th>Очки достижений</th>
             <th>Ранг</th>
+            <th>Активность</th>
+            <th>На удаление</th>
         </tr>
     </theader>
     <tbody>
         <?php foreach($characters as $member):?>
             <tr>
-                <td><img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/<?=$member->thumbnail?>" alt="Аватар"></td>
+<!--                <td><img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/--><?//=$member->thumbnail?><!--" alt="Аватар"></td>-->
+                <td></td>
                 <td><?=$member->name?></td>
                 <td><?=$member->class?></td>
                 <td><?=$member->race?></td>
                 <td><?=$member->level?></td>
                 <td><?=$member->achievementPoints?></td>
                 <td><?=$member->rank?></td>
+                <td><input type="checkbox" <?=$member->is_active ? 'checked' : ''?> id="is_active_<?=$member->name?>" onchange="activeChange(this, '<?=$member->name?>')"><label for="is_active_<?=$member->name?>">Играет</label></td>
+                <td><input type="checkbox"<?=$member->wait_delete? 'checked' : ''?> id="wait_delete_<?=$member->name?>" onchange="deleteChange(this, '<?=$member->name?>')"><label
+                        for="wait_delete_<?=$member->name?>">На удаление</label></td>
             </tr>
         <?php endforeach?>
     </tbody>

@@ -1,6 +1,7 @@
 <?php
 include "Controller.php";
 include "CharacterClass.php";
+include "Character.php";
 
 class ResurcesController extends Controller
 {
@@ -29,5 +30,31 @@ class ResurcesController extends Controller
 
 		$data = [];
 		$this->render("index", $data);
+	}
+
+	public function activeAction() {
+		$is_active = !!$_GET['is_active'];
+		$name = $_GET['name'];
+		$character = Character::model()->find_by_name($name);
+		if($character) {
+			$character->is_active = $is_active ? 1 : 0;
+			$character->update();
+			echo "OK";
+		} else {
+			echo "NOT FOUND";
+		}
+	}
+
+	public function deleteAction() {
+		$wait_delete = !!$_GET['wait_delete'];
+		$name = $_GET['name'];
+		$character = Character::model()->find_by_name($name);
+		if($character) {
+			$character->wait_delete = $wait_delete ? 1 : 0;
+			$character->update();
+			echo "OK";
+		} else {
+			echo "NOT FOUND";
+		}
 	}
 }

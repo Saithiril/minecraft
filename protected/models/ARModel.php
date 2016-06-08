@@ -75,8 +75,8 @@ class ARModel
 		$order = "ORDER BY {$this->getPK()} desc";
 		$text_limit = $limit==0 ? "" : "LIMIT $start, $limit";
 		$join = "";
-		foreach($this->joins as $table=>$condition) {
-			$join .= "JOIN $table ON $condition";
+		foreach($this->joins as $table=>$_condition) {
+			$join .= "JOIN $table ON $_condition";
 		}
 		if(empty($condition))
 			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $join $text_limit;");
@@ -133,6 +133,8 @@ class ARModel
 		$data = array_combine ($keys, array_values(array_map(function ($x) use($object) {return $object->$x;}, $fields)));
 		$data[':id'] = $this->{$this->getPK()};
 		$result->execute($data);
+		var_dump($result);
+		var_dump($data);
 	}
 
 	public function delete() {
@@ -187,6 +189,11 @@ class ARModel
 					$this->_attributes[$name] = $items[0];
 					return $items[0];
 				}
+			}
+			if($type == self::HAS_ONE) {
+				$item = $model = $modelname::model()->find("{$keys[1]}=:id", array('id' => $this->{$keys[0]}));
+				$this->_attributes[$name] = $item;
+				return $item;
 			}
 		}
 		return array();

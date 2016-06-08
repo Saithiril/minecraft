@@ -21,7 +21,8 @@ class SiteController extends Controller
 			"characters" => $characters,
 			'guild' => $guild,
 			'page' => $page,
-			'pagecount' => $count_all / $perpage,
+			'pagecount' => ceil($count_all / $perpage),
+			'count_all' => $count_all
 		);
 
 		$this->render("index", $data);
@@ -31,6 +32,28 @@ class SiteController extends Controller
 		$guildname = 'ЕКАТЕРИНБУРГ';
 
 		$guild = Guild::model()->find('name=:name', array(':name'=>$guildname));
+
+		if(!$guild) {
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/guild/Голдринн/$guildname?fields=achievements%2Cchallenge&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+			$data = curl_exec($curl);
+			curl_close($curl);
+			$guild_info = json_decode($data);
+			if(isset($guild_info->name)) {
+				$guild = Guild::model();
+				$guild->name = $guild_info->name;
+				$guild->realm = $guild_info->realm;
+				$guild->battlegroup = $guild_info->battlegroup;
+				$guild->level = $guild_info->level;
+				$guild->side = $guild_info->side;
+				$guild->achievementPoints = $guild_info->achievementPoints;
+				$guild->lastModified = $guild_info->lastModified;
+				$guild->save();
+			} else {
+				$this->redirect('/');
+			}
+		}
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/guild/Голдринн/$guildname?fields=members&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");

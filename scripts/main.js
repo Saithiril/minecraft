@@ -67,3 +67,51 @@ function delete_image(image_id) {
     }
     xmlhttp.send();
 }
+
+function activeChange(e, name) {
+    'use strict'
+    var
+        xmlhttp = utils.xmlhttp,
+        is_active = e.checked ? 1 : 0;
+
+    xmlhttp.open('GET', 'resurces/active?is_active='+ is_active + '&name=' + name, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlhttp.onreadystatechange = function()
+    {
+        if (xmlhttp.readyState == 4)
+        {
+            if(xmlhttp.status==0) {
+            }
+            if(xmlhttp.status == 200) {
+                var response = xmlhttp.responseText;
+                console.log(response);
+            }
+        }
+    }
+    xmlhttp.send();
+}
+
+function deleteChange(e, name) {
+    'use strict'
+    var
+        xmlhttp = utils.xmlhttp,
+        wait_delete = e.checked ? 1 : 0;
+
+    xmlhttp.open('GET', 'resurces/delete?wait_delete='+ wait_delete + '&name=' + name, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xmlhttp.onreadystatechange = function()
+    {
+        if (xmlhttp.readyState == 4)
+        {
+            if(xmlhttp.status==0) {
+            }
+            if(xmlhttp.status == 200) {
+                var response = xmlhttp.responseText;
+                console.log(response);
+            }
+        }
+    }
+    xmlhttp.send();
+}
