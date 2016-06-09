@@ -139,6 +139,7 @@ class ARModel
 		$keys = array_map(function ($x) {return ":$x";}, $fields);
 		$data = array_combine ($keys, array_values(array_map(function ($x) use($object) {return $object->$x;}, $fields)));
 		$data[':id'] = $this->{$this->getPK()};
+		var_dump($data);
 		$result->execute($data);
 	}
 

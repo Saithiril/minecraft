@@ -106,3 +106,6 @@ CREATE TABLE specs (
     spec_order INT(5),
     PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+SELECT ch.name, s1.name, s2.name FROM characters as ch JOIN specs as s1 ON ch.first_spec_id=s1.id LEFT JOIN specs as s2 ON ch.second_spec_id=s2.id;

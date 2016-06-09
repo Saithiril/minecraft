@@ -2,14 +2,15 @@
 <h1><?= $guild->name?></h1>
 <p>Достижения: <?=$guild->achievementPoints?></p>
 <p>Количество игроков: <?= $count_all?></p>
+    <p><a href="/stat">Статистика</a></p>
 
     <div class="pagination">
         <?if($page > 1):?>
-            <div class="__item"><a href="?page=1">В начало</a></div><div class="__item"><a href="?page=<?= $page - 1 ?>">Назад</a></div>
+            <div class="__item"><a href="?<?=$sort ? "sort={$sort['field']}&dir={$sort['curdir']}&": ''?>page=1">В начало</a></div><div class="__item"><a href="?<?=$sort ? "sort={$sort['field']}&dir={$sort['curdir']}&": ''?>page=<?= $page - 1 ?>">Назад</a></div>
         <?endif?>
         <div class="__item">Страница <?=$page?> из <?=$pagecount?></div>
         <?if($page < $pagecount):?>
-            <div class="__item"><a href="?page=<?= $page + 1 ?>">Вперед</a></div><div class="__item"><a href="?page=<?=$pagecount?>">В конец</a></div>
+            <div class="__item"><a href="?<?=$sort ? "sort={$sort['field']}&dir={$sort['curdir']}&": ''?>page=<?= $page + 1 ?>">Вперед</a></div><div class="__item"><a href="?<?=$sort ? "sort={$sort['field']}&dir={$sort['curdir']}&": ''?>page=<?=$pagecount?>">В конец</a></div>
         <?endif?>
     </div>
 <table border="1px" width="100%" class="character_list">
@@ -29,8 +30,8 @@
     <tbody>
         <?php foreach($characters as $member):?>
             <tr>
-<!--                <td><img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/--><?//=$member->thumbnail?><!--" alt="Аватар"></td>-->
-                <td></td>
+                <td><img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/<?=$member->thumbnail?>" alt="Аватар"></td>
+<!--                <td></td>-->
                 <td><a href="/character?name=<?=$member->name?>"><?=$member->name?></a></td>
                 <td><?=$member->className->name?></td>
                 <td><?=$member->_race ? $member->_race->name : '-'?></td>

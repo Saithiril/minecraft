@@ -52,10 +52,10 @@ class CharacterController extends Controller
 		$character->totalHonorableKills = $character_data->totalHonorableKills;
 		$character->lastModified = $character_data->lastModified;
 		if(isset($specs[0])) {
-			$character->first_spec_id = $specs[0];
+			$character->first_spec_id = (int)$specs[0];
 		}
 		if(isset($specs[1])) {
-			$character->second_spec_id = $specs[1];
+			$character->second_spec_id = (int)$specs[1];
 		}
 		$character->update();
 		$this->redirect("/character?name=$name");

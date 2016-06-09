@@ -31,6 +31,14 @@ class Character extends ARModel
         return $this->_find_all('guild_id=:id', array('id' => $guild_id), $start, $count);
     }
 
+    public function get_class_stat($guild_id) {
+        $result = $this->getDbConnection()->prepare("SELECT count(ch.id) as count, cl.name from characters as ch JOIN classes as cl ON ch.class=cl.id WHERE ch.guild_id=:guild_id AND ch.level=100 AND is_active=1 AND wait_delete=0 GROUP BY ch.class");
+        $result->execute( array(
+            'guild_id' => $guild_id,
+        ));
+        return $result->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE);
+    }
+
     public function rules() {
         return array(
             'update' => array('is_active', 'wait_delete', 'calcClass', 'faction', 'totalHonorableKills', 'guild_id', 'lastModified', 'first_spec_id', 'second_spec_id'),
