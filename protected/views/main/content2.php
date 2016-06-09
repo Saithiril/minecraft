@@ -15,15 +15,19 @@ include_once "Spec.php";
 
 //$args['tyres'] = new CurlFile('kolesamira_ufa.yml');
 //
-$guild_name = "ЕКАТЕРИНБУРГ";
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/character/Голдринн/Алефейя?fields=talents&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
-curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
-$data = curl_exec($curl);
-curl_close($curl);
-$data_info = json_decode($data);
-
-
+$url = "https://api.content.market.yandex.ru/v1/model/5070894/opinion.json?sort=rank&count=1";
+$headers = array(
+    "Host: api.content.market.yandex.ru",
+    "Accept: */*",
+    "Authorization: DKHIvilkQGY9DQ3zMFea9F70ByFFpr"
+);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+  $data = curl_exec($ch);
+  var_dump($data);
+curl_close($ch);
 // kolesamira
 
 //$file_path = "kolesamira_ufa.yml";

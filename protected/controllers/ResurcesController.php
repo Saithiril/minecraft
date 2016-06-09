@@ -8,6 +8,7 @@ class ResurcesController extends Controller
 {
 	public function indexAction() {
 		$classes = CharacterClass::model()->find_all();
+		$races = Race::model()->find_all();
 
 		if(!$classes) {
 			$curl = curl_init();
@@ -24,6 +25,24 @@ class ResurcesController extends Controller
 				$wow_class->powerType = $class->powerType;
 				$wow_class->name = $class->name;
 				$wow_class->save();
+			}
+		}
+
+		if(!$races) {
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/data/character/races?locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+			$data = curl_exec($curl);
+			curl_close($curl);
+			$races_data = json_decode($data);
+
+			foreach($races_data->races as $item) {
+				$race = Race::model();
+				$race->id = $item->id;
+				$race->mask = $item->mask;
+				$race->side = $item->side;
+				$race->name = $item->name;
+				$race->save();
 			}
 		}
 

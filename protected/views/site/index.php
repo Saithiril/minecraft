@@ -31,9 +31,9 @@
             <tr>
 <!--                <td><img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/--><?//=$member->thumbnail?><!--" alt="Аватар"></td>-->
                 <td></td>
-                <td><?=$member->name?></td>
+                <td><a href="/character?name=<?=$member->name?>"><?=$member->name?></a></td>
                 <td><?=$member->className->name?></td>
-                <td><?=$member->race?></td>
+                <td><?=$member->_race ? $member->_race->name : '-'?></td>
                 <td><?=$member->level?></td>
                 <td><?=$member->achievementPoints?></td>
                 <td><?=$member->rank?></td>

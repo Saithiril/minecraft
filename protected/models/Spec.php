@@ -12,4 +12,8 @@ class Spec extends ARModel
     {
         return "specs";
     }
+
+    public function find_by_name($name) {
+        return $this->find('name=:name', array("name"=>$name));
+    }
 }

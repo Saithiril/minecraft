@@ -196,9 +196,14 @@ class ARModel
 				}
 			}
 			if($type == self::HAS_ONE) {
-				$item = $model = $modelname::model()->find("{$keys[1]}=:id", array('id' => $this->{$keys[0]}));
-				$this->_attributes[$name] = $item;
-				return $item;
+				if($this->{$keys[0]}) {
+					$item = $model = $modelname::model()->find("{$keys[1]}=:id", array('id' => $this->{$keys[0]}));
+					if ($item) {
+						$this->_attributes[$name] = $item;
+						return $item;
+					}
+				}
+				return array();
 			}
 		}
 		return array();
@@ -209,6 +214,9 @@ class ARModel
 	}
 
 	public function __isset($name) {
+		if(isset($this->relations()[$name])) {
+			$this->$name;
+		}
 		if (isset($this->_attributes[$name]))
 			return true;
 		else

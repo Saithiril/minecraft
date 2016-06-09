@@ -3,6 +3,7 @@ include_once "Controller.php";
 include_once "Guild.php";
 include_once "Character.php";
 include_once "CharacterClass.php";
+include_once "Race.php";
 
 class SiteController extends Controller
 {

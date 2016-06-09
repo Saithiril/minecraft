@@ -1,5 +1,6 @@
 <?php
 include_once("ARModel.php");
+include_once ("Spec.php");
 
 class Character extends ARModel
 {
@@ -16,7 +17,9 @@ class Character extends ARModel
     public function relations() {
         return array(
             "className" => array(self::HAS_ONE, 'CharacterClass', '', array('class', 'id')),
-            "_race" => array(self::HAS_ONE, 'Race', '', array('class', 'id')),
+            "_race" => array(self::HAS_ONE, 'Race', '', array('race', 'id')),
+            "first_spec" => array(self::HAS_ONE, 'Spec', '', array('first_spec_id', 'id')),
+            "second_spec" => array(self::HAS_ONE, 'Spec', '', array('second_spec_id', 'id')),
         );
     }
 
@@ -30,7 +33,7 @@ class Character extends ARModel
 
     public function rules() {
         return array(
-            'update' => array('is_active', 'wait_delete'),
+            'update' => array('is_active', 'wait_delete', 'calcClass', 'faction', 'totalHonorableKills', 'guild_id', 'lastModified', 'first_spec_id', 'second_spec_id'),
             'order' => array('name', 'class', 'level', 'race', 'achievementPoints', 'rank', 'is_active', 'wait_delete'),
         );
     }
