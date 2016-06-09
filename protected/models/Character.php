@@ -30,7 +30,8 @@ class Character extends ARModel
 
     public function rules() {
         return array(
-            'update' => array('is_active', 'wait_delete')
+            'update' => array('is_active', 'wait_delete'),
+            'order' => array('name', 'class', 'level', 'race', 'achievementPoints', 'rank', 'is_active', 'wait_delete'),
         );
     }
 }

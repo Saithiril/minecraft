@@ -15,6 +15,7 @@ class ARModel
 	private $joins = array();
 	private $filters = array();
 	private $last_count = 0;
+	private $_order = '';
 
 	public static function model($className=__CLASS__)
 	{
@@ -46,6 +47,13 @@ class ARModel
 		return $this;
 	}
 
+	public function order($field, $order = 'ASC') {
+		if(mb_strtoupper($order) == 'ASC' || mb_strtoupper($order) == 'DESC') {
+			$this->_order = "ORDER BY $field $order";
+		}
+		return $this;
+	}
+
 	public function find_by_pk($pk) {
 		$data = $this->_find("{$this->getPK()}=:id", array(':id'=>$pk));
 		if(!empty($data))
@@ -72,16 +80,15 @@ class ARModel
 	}
 
 	private function _find($condition="", $params="", $start=0, $limit=0) {
-		$order = "ORDER BY {$this->getPK()} desc";
 		$text_limit = $limit==0 ? "" : "LIMIT $start, $limit";
 		$join = "";
 		foreach($this->joins as $table=>$_condition) {
 			$join .= "JOIN $table ON $_condition";
 		}
 		if(empty($condition))
-			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $join $text_limit;");
+			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $join {$this->_order} $text_limit;");
 		else
-			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $join where $condition $text_limit;");
+			$result = $this->getDbConnection()->prepare("select * from {$this->tableName()} $join where $condition {$this->_order} $text_limit;");
 		if(empty($params))
 			$result->execute();
 		else
@@ -146,7 +153,7 @@ class ARModel
 		return array();
 	}
 
-	protected function getPK() {
+	public function getPK() {
 		return 'id';
 	}
 

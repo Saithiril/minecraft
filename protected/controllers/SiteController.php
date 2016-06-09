@@ -1,20 +1,30 @@
 <?php
-include "Controller.php";
-include "Guild.php";
-include "Character.php";
+include_once "Controller.php";
+include_once "Guild.php";
+include_once "Character.php";
+include_once "CharacterClass.php";
 
 class SiteController extends Controller
 {
 	public function indexAction() {
+		$sort = isset($_GET['sort']) ? $_GET['sort'] : null;
+		$dir = isset($_GET['dir']) ? $_GET['dir'] : null;
+		$rules = Character::model()->rules();
+		$orders = isset($rules['order']) ? Character::model()->rules()['order'] : array();
+
 		$guildname = 'ЕКАТЕРИНБУРГ';
 
 		$guild = Guild::model()->find('name=:name', array(':name'=>$guildname));
 
 		$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-		$perpage = 20;
+		$perpage = 100;
 		$start = ($page-1) * $perpage;
 
-		$characters = Character::model()->find_guild_members($guild->id, $start, $perpage);
+		$characters = Character::model()
+			->order(($sort && $orders && in_array($sort, $orders)) ? $sort : Character::model()
+			->getPK(), ($dir && $dir=='d') ? 'DESC' : 'ASC')
+			->find_guild_members($guild->id, $start, $perpage);
+
 		$count_all = Character::model()->get_last_query_count();
 
 		$data = array(
@@ -22,7 +32,8 @@ class SiteController extends Controller
 			'guild' => $guild,
 			'page' => $page,
 			'pagecount' => ceil($count_all / $perpage),
-			'count_all' => $count_all
+			'count_all' => $count_all,
+			'sort' => $sort ? array('field' => $sort, 'dir' => (!$dir || $dir=='d') ? 'a' : 'd') : array(),
 		);
 
 		$this->render("index", $data);
