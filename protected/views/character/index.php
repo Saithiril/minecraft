@@ -8,8 +8,9 @@
 <p>Раса: <?=$character->_race ?$character->_race->name : '-'?></p>
 <p>Специализации: </p>
 <ul>
-    <li><?=isset($character->first_spec) ? $character->first_spec->name : 'нет'?></li>
-    <li><?=isset($character->second_spec) ? $character->second_spec->name : 'нет'?></li>
+    <?php foreach($character->specs as $spec):?>
+        <li><?=$spec->name?></li>
+    <?endforeach?>
 </ul>
 
 <a href="/">Назад</a>

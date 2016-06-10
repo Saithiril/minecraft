@@ -4,6 +4,7 @@ include_once "Guild.php";
 include_once "Character.php";
 include_once "CharacterClass.php";
 include_once "Race.php";
+include_once "Spec.php";
 
 class SiteController extends Controller
 {
@@ -74,7 +75,6 @@ class SiteController extends Controller
 		curl_close($curl);
 		$guild_info = json_decode($data);
 
-		$method = 'update';
 		foreach($guild_info->members as $member) {
 			if(!$character = Character::model()->find_by_name($member->character->name)) {
 				$character = Character::model();
@@ -90,46 +90,44 @@ class SiteController extends Controller
 				$character->thumbnail = $member->character->thumbnail;
 				$character->gender = $member->character->gender;
 				$character->rank = $member->rank;
-				$method = 'save';
-//				$character->save();
+				$character->id = $character->save();
+//				$character = Character::model()->find_by_pk($id);
 			}
-			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/character/Голдринн/{$character->name}?fields=talents&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
-			$data = curl_exec($curl);
-			curl_close($curl);
-			$character_data = json_decode($data);
 
-			$specs = array();
-			foreach($character_data->talents as $talent) {
-				if(isset($talent->spec)) {
-					$spec = Spec::model()->find_by_name($talent->spec->name);
-					if(!$spec) {
-						$spec = Spec::model();
-						$spec->name = $talent->spec->name;
-						$spec->role = $talent->spec->role;
-						$spec->backgroundImage = $talent->spec->backgroundImage;
-						$spec->icon = $talent->spec->icon;
-						$spec->description = $talent->spec->description;
-						$spec->spec_order = $talent->spec->order;
-						$id = $spec->save();
-						$spec->id = $id;
+			if($character->level >= 10) {
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, "https://eu.api.battle.net/wow/character/Голдринн/{$character->name}?fields=talents&locale=ru_RU&apikey=f2ppxyc6frxaqhw7eg298hh5gb6za92j");
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				$data = curl_exec($curl);
+				curl_close($curl);
+				$character_data = json_decode($data);
+
+				$specs = array();
+				foreach ($character_data->talents as $talent) {
+					if (isset($talent->spec)) {
+						$spec = Spec::model()->find_by_name($talent->spec->name);
+						if (!$spec) {
+							$spec = Spec::model();
+							$spec->name = $talent->spec->name;
+							$spec->role = $talent->spec->role;
+							$spec->backgroundImage = $talent->spec->backgroundImage;
+							$spec->icon = $talent->spec->icon;
+							$spec->description = $talent->spec->description;
+							$spec->spec_order = $talent->spec->order;
+							$id = $spec->save();
+							$spec->id = $id;
+						}
+						$specs[] = clone($spec);
 					}
-					$specs[] = $spec->id;
 				}
-			}
 
-			$character->calcClass = $character_data->calcClass;
-			$character->faction = $character_data->faction;
-			$character->totalHonorableKills = $character_data->totalHonorableKills;
-			$character->lastModified = $character_data->lastModified;
-			if(isset($specs[0])) {
-				$character->first_spec_id = (int)$specs[0];
+				$character->calcClass = $character_data->calcClass;
+				$character->faction = $character_data->faction;
+				$character->totalHonorableKills = $character_data->totalHonorableKills;
+				$character->lastModified = $character_data->lastModified;
+				$character->specs = $specs;
 			}
-			if(isset($specs[1])) {
-				$character->second_spec_id = (int)$specs[1];
-			}
-			$character->$method();
+			$character->save();
 		}
 		$this->redirect('/');
 	}

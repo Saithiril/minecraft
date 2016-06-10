@@ -30,8 +30,8 @@
     <tbody>
         <?php foreach($characters as $member):?>
             <tr>
-                <td><img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/<?=$member->thumbnail?>" alt="Аватар"></td>
-<!--                <td></td>-->
+<!--                <td><img src="http://render-api-eu.worldofwarcraft.com/static-render/eu/--><?//=$member->thumbnail?><!--" alt="Аватар"></td>-->
+                <td></td>
                 <td><a href="/character?name=<?=$member->name?>"><?=$member->name?></a></td>
                 <td><?=$member->className->name?></td>
                 <td><?=$member->_race ? $member->_race->name : '-'?></td>

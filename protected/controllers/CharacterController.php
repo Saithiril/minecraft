@@ -28,36 +28,35 @@ class CharacterController extends Controller
 			$this->redirect("/");
 		}
 
-		$specs = array();
-		foreach($character_data->talents as $talent) {
-			if(isset($talent->spec)) {
-				$spec = Spec::model()->find_by_name($talent->spec->name);
-				if(!$spec) {
-					$spec = Spec::model();
-					$spec->name = $talent->spec->name;
-					$spec->role = $talent->spec->role;
-					$spec->backgroundImage = $talent->spec->backgroundImage;
-					$spec->icon = $talent->spec->icon;
-					$spec->description = $talent->spec->description;
-					$spec->spec_order = $talent->spec->order;
-					$id = $spec->save();
-					$spec->id = $id;
-				}
-				$specs[] = $spec->id;
-			}
-		}
+		if($character->level >= 10) {
+			$specs = array();
 
-		$character->calcClass = $character_data->calcClass;
-		$character->faction = $character_data->faction;
-		$character->totalHonorableKills = $character_data->totalHonorableKills;
-		$character->lastModified = $character_data->lastModified;
-		if(isset($specs[0])) {
-			$character->first_spec_id = (int)$specs[0];
+			foreach ($character_data->talents as $talent) {
+				if (isset($talent->spec)) {
+					$spec = Spec::model()->find_by_name($talent->spec->name);
+					if (!$spec) {
+						$spec = Spec::model();
+						$spec->name = $talent->spec->name;
+						$spec->role = $talent->spec->role;
+						$spec->backgroundImage = $talent->spec->backgroundImage;
+						$spec->icon = $talent->spec->icon;
+						$spec->description = $talent->spec->description;
+						$spec->spec_order = $talent->spec->order;
+						$id = $spec->save();
+						$spec->id = $id;
+					}
+					$specs[] = clone($spec);
+				}
+			}
+
+			$character->calcClass = $character_data->calcClass;
+			$character->faction = $character_data->faction;
+			$character->totalHonorableKills = $character_data->totalHonorableKills;
+			$character->lastModified = $character_data->lastModified;
+			$character->specs = $specs;
+
+			$character->save();
 		}
-		if(isset($specs[1])) {
-			$character->second_spec_id = (int)$specs[1];
-		}
-		$character->update();
 		$this->redirect("/character?name=$name");
 	}
 }

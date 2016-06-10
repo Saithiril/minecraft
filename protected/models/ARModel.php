@@ -115,6 +115,16 @@ class ARModel
 	}
 
 	public function save() {
+		$relations = $this->relations();
+		$this->many_many_save(array_filter(array_keys($this->_attributes),
+			function($item) use($relations){
+				return (isset($relations[$item]) && $relations[$item][0] == self::MANY_MANY);
+			})
+		);
+
+		if(isset($this->{$this->getPK()}) && $this->find_by_pk($this->getPKValue())) {
+			return $this->update();
+		}
 		$fields = implode(", ", array_keys($this->_attributes));
 		$keys = array_map(function ($x) {return ":$x";}, array_keys($this->_attributes));
 		$values = implode(",",$keys);
@@ -133,14 +143,34 @@ class ARModel
 			return;
 
 		$object = $this;
+		$fields = array_filter($fields, function($item) use ($object){return !!$object->$item;});
 		$field_list = array_map(function ($x) {return "$x=:$x";}, $fields);
 		$values = implode(",",$field_list);
 		$result = $this->getDbConnection()->prepare("update {$this->tableName()} set {$values} where {$this->getPK()}=:id;");
 		$keys = array_map(function ($x) {return ":$x";}, $fields);
 		$data = array_combine ($keys, array_values(array_map(function ($x) use($object) {return $object->$x;}, $fields)));
 		$data[':id'] = $this->{$this->getPK()};
-		var_dump($data);
-		$result->execute($data);
+
+		if($data) {
+			$result->execute($data);
+		}
+	}
+
+	private function many_many_save($data) {
+		foreach($data as $field) {
+			$values =  $this->_attributes[$field];
+			list($type, $modelname, $tablename, $keys) = $this->relations()[$field];
+			$query_keys = implode(',',$keys);
+			unset($this->_attributes[$field]);
+
+			$result = $this->getDbConnection()->prepare("DELETE FROM $tablename WHERE {$keys[0]} = {$this->getPKValue()};");
+			$result->execute();
+
+			foreach($values as $value) {
+				$result = $this->getDbConnection()->prepare("insert into $tablename($query_keys) values({$this->getPKValue()}, {$value->getPKValue()});");
+				$result->execute();
+			}
+		}
 	}
 
 	public function delete() {
@@ -188,12 +218,16 @@ class ARModel
 					':id' => $this->getPKValue(),
 				));
 				$items = $result->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_class($model));
-				if(count($items) > 1) {
-					$this->_attributes[$name] = $items;
-					return $items;
+				if($items) {
+					if (count($items) > 1) {
+						$this->_attributes[$name] = $items;
+						return $items;
+					} else {
+						$this->_attributes[$name] = $items[0];
+						return $items[0];
+					}
 				} else {
-					$this->_attributes[$name] = $items[0];
-					return $items[0];
+					return array();
 				}
 			}
 			if($type == self::HAS_ONE) {
