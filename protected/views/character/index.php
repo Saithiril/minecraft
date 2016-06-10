@@ -6,12 +6,16 @@
 <p>Уровень: <?=$character->level?></p>
 <p>Класс: <?=$character->className->name?></p>
 <p>Раса: <?=$character->_race ?$character->_race->name : '-'?></p>
-<p>Специализации: </p>
+<? if(count($character->specs) > 1):?>
+    <p>Специализации: </p>
 <ul>
     <?php foreach($character->specs as $spec):?>
         <li><?=$spec->name?></li>
     <?endforeach?>
 </ul>
+    <?else:?>
+        <p>Специализациия: <?=isset($character->specs->name) ? $character->specs->name : "-"?></p>
+    <?endif?>
 
 <a href="/">Назад</a>
 <?// print_r($character)?>
